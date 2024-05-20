@@ -19,6 +19,13 @@ pipeline{
                 sh 'mvn package -DMYSQL_DATABASE=$MYSQL_DATABASE -DBACKEND_INTERNAL_PORT=$BACKEND_INTERNAL_PORT -DMYSQL_USR=$MYSQL_USR -DMYSQL_PSW=$MYSQL_PSW'
             }
         }
+
+        stage("Verify JAR File") {
+            steps {
+                sh 'ls -lh target/jairu-0.0.1-SNAPSHOT.jar'
+            }
+        }
+
         stage("Testing Stage"){
             steps{
                 sh 'mvn test -DMYSQL_DATABASE=$MYSQL_DATABASE -DBACKEND_INTERNAL_PORT=$BACKEND_INTERNAL_PORT -DMYSQL_USR=$MYSQL_USR -DMYSQL_PSW=$MYSQL_PSW'
