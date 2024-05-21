@@ -38,7 +38,7 @@ pipeline{
         }
         stage("Building Docker Image"){
             steps{
-                sh 'docker build -t arjun201/aj-backend:1.0 .'
+                sh 'docker build --no-cache -t arjun201/aj-backend:1.0 .'
             }
         }
         stage("Pushing Docker Image on DockerHub"){
