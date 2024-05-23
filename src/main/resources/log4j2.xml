@@ -4,16 +4,21 @@
         <Console name="ConsoleAppender" target="SYSTEM_OUT">
             <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} [%F] [%level] %logger{36} %msg%n"/>
         </Console>
-        <File name="FileAppender" fileName="./logs/jairu.log" append="true">
+        <File name="FileAppender" fileName="./logs/workwise.log" append="true">
             <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} [%F] [%level] %logger{36} %msg%n"/>
         </File>
+        <Socket name="LogstashAppender" host="${env:LOGSTASH_HOST}" port="${env:LOGSTASH_PORT}">
+            <LogstashLayout/>
+        </Socket>
     </Appenders>
     <Loggers>
-        <Logger name="jairu" level="INFO">
+        <Logger name="workwise" level="INFO">
             <AppenderRef ref="FileAppender"/>
+            <AppenderRef ref="LogstashAppender"/>
         </Logger>
         <Root level="info">
             <AppenderRef ref="ConsoleAppender"/>
+            <AppenderRef ref="LogstashAppender"/>
         </Root>
     </Loggers>
 </Configuration>
