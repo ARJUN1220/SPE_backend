@@ -22,7 +22,7 @@ pipeline{
 
         stage("Verify JAR File") {
             steps {
-                sh 'ls -lh target/jairu-0.0.1-SNAPSHOT.jar'
+                sh 'ls -lh target/workwise-0.0.1-SNAPSHOT.jar'
             }
         }
 
